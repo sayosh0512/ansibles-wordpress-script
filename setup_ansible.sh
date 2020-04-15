@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "Public Ip is : ${1}" >> /tmp/var.txt
+echo "sshkey is : ${2}" >> /tmp/var.txt
 ssh_key_configuration() {
 
 azurepass=P@ssw0rd@1202
@@ -33,7 +34,6 @@ ansible-playbook /home/azureadmin/wordpressplaybook/playbook.yml -i /etc/ansible
 
 
 ssh_key_configuration >> /tmp/var.txt
-install_ansible ${1} >> /tmp/var.txt 
+install_ansible ${1} >> /tmp/var.txt
 configure_ansible ${1} >> /tmp/var.txt
 wordpress_install >> /tmp/var.txt
-
