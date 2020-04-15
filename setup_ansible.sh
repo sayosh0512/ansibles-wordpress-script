@@ -4,7 +4,7 @@ echo "Public Ip is : ${1}" >> /tmp/var.txt
 ssh_key_configuration() {
 
 azurepass=P@ssw0rd@1202
-ssh-keygen /home/azureadmin/.ssh/id_rsa \n \n 
+ssh-keygen -t rsa -N '' -f /home/azureadmin/.ssh/id_rsa <<< y
 ssh-copy-id azureadmin@${1} password azurepass yes\n
 #40.117.99.34
 }
