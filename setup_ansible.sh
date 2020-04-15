@@ -10,7 +10,6 @@ ssh-copy-id azureadmin@${1} password azurepass yes\n
 }
 
 install_ansible() {
-echo "Public Ip is : ${1}" >> /tmp/var.txt
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible -y
