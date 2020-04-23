@@ -8,9 +8,10 @@ echo "dbusername is : ${5}" >> /home/${3}/var.txt
 echo "dbPassword is : ${6}" >> /home/${3}/var.txt
 
 ssh_key_configuration() {
+sudo apt-get update  >> /home/${3}/var.txt
 sudo apt-get install sshpass
 sudo ssh-keygen -t rsa -N '' -f /home/${3}/.ssh/id_rsa <<< y
-  echo "${2}" | sshpass ssh-copy-id -f -i /home/${3}/.ssh/id_rsa.pub ${3}@"${1}"
+ echo "${2}" | sshpass ssh-copy-id -f -i /home/${3}/.ssh/id_rsa.pub ${3}@"${1}"
  sudo chown ${3}:${3} /home/${3}/.ssh/id_rsa*
 }
 
