@@ -38,7 +38,7 @@ echo "dbservername is : ${2}" >> /home/${1}/var.txt
 echo "dbusername is : ${3}" >> /home/${1}/var.txt
 echo "dbPassword is : ${4}" >> /home/${1}/var.txt
 sudo sed -i "s~server_hostname: wordpress~server_hostname: ${7}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
-sudo sed -i "s~'localhost'~’${2}’~" /home/${1}/wordpressplaybook/wordpress/roles/templates/wp-config.php >> /home/${1}/var.txt
+sudo sed -i "s~'localhost'~'${2}'~" /home/${1}/wordpressplaybook/wordpress/roles/templates/wp-config.php >> /home/${1}/var.txt
 sudo sed -i "s~wp_db_user: wordpress~wp_db_user: ${3}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
 sudo sed -i "s~wp_db_password: password~wp_db_password: ${4}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
 ansible-playbook /home/${1}/wordpressplaybook/playbook.yml -i /etc/ansible/hosts -u ${1}
