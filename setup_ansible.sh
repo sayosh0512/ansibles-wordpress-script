@@ -6,6 +6,8 @@ echo "username is : ${3}" >> /home/${3}/var.txt
 echo "dbservername is : ${4}" >> /home/${3}/var.txt
 echo "dbusername is : ${5}" >> /home/${3}/var.txt
 echo "dbPassword is : ${6}" >> /home/${3}/var.txt
+echo "domainname is : ${7}" >> /home/${3}/var.txt
+
 
 ssh_key_configuration() {
 sudo apt-get update  >> /home/${3}/var.txt
@@ -35,7 +37,7 @@ echo "username is : ${1}" >> /home/${1}/var.txt
 echo "dbservername is : ${2}" >> /home/${1}/var.txt
 echo "dbusername is : ${3}" >> /home/${1}/var.txt
 echo "dbPassword is : ${4}" >> /home/${1}/var.txt
-#sudo sed -i "s~wp_db_name: wordpress~wp_db_name: ${2}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt
+sudo sed -i "s~server_hostname: wordpress~server_hostname: ${7}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
 sudo sed -i "s~'localhost'~’${2}’~" /home/${1}/wordpressplaybook/wordpress/roles/templates/wp-config.php >> /home/${1}/var.txt
 sudo sed -i "s~wp_db_user: wordpress~wp_db_user: ${3}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
 sudo sed -i "s~wp_db_password: password~wp_db_password: ${4}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
