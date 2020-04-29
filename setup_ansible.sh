@@ -37,10 +37,12 @@ echo "username is : ${1}" >> /home/${1}/var.txt
 echo "dbservername is : ${2}" >> /home/${1}/var.txt
 echo "dbusername is : ${3}" >> /home/${1}/var.txt
 echo "dbPassword is : ${4}" >> /home/${1}/var.txt
-sudo sed -i "s~server_hostname: wordpress~server_hostname: ${7}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
-sudo sed -i "s~'localhost'~'${2}'~" /home/${1}/wordpressplaybook/wordpress/roles/templates/wp-config.php >> /home/${1}/var.txt
-sudo sed -i "s~wp_db_user: wordpress~wp_db_user: ${3}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
-sudo sed -i "s~wp_db_password: password~wp_db_password: ${4}~" /home/${1}/wordpressplaybook/group_vars/all  >> /home/${1}/var.txt 
+sudo sed -i "s~italent~${1}~" /home/${1}/wordpress_playbook/roles/woocoommerce/tasks/main.yml  >> /home/${1}/var.txt 
+sudo sed -i "s~domain~${5}~" /home/${1}/wordpress_playbook/roles/woocoommerce/tasks/main.yml  >> /home/${1}/var.txt 
+sudo sed -i "s~server_hostname: wordpress~server_hostname: ${5}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
+sudo sed -i "s~'localhost'~'${2}'~" /home/${1}/wordpress_playbook/roles/templates/wp-config.php >> /home/${1}/var.txt
+sudo sed -i "s~wp_db_user: wordpress~wp_db_user: ${3}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
+sudo sed -i "s~wp_db_password: password~wp_db_password: ${4}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
 ansible-playbook /home/${1}/wordpressplaybook/playbook.yml -i /etc/ansible/hosts -u ${1}
 }
 
@@ -49,7 +51,7 @@ sudo systemctl restart ssh
 ssh_key_configuration ${1} ${2} ${3} >> /home/${3}/var.txt
 install_ansible >> /home/${3}/var.txt
 configure_ansible ${1} ${3} >> /home/${3}/var.txt
-wordpress_install ${3} ${4} ${5} ${6} >> /home/${3}/var.txt
+wordpress_install ${3} ${4} ${5} ${6} ${7} >> /home/${3}/var.txt
 sudo sed -i "s~   StrictHostKeyChecking no~#   StrictHostKeyChecking ask~" /etc/ssh/ssh_config  >> /home/${3}/var.txt
 sudo systemctl restart ssh
 
