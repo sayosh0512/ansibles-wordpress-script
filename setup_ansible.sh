@@ -43,7 +43,7 @@ sudo sed -i "s~server_hostname: wordpress~server_hostname: ${5}~" /home/${1}/wor
 sudo sed -i "s~'localhost'~'${2}'~" /home/${1}/wordpress_playbook/roles/wordpress/templates/wp-config.php >> /home/${1}/var.txt
 sudo sed -i "s~wp_db_user: wordpress~wp_db_user: ${3}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
 sudo sed -i "s~wp_db_password: password~wp_db_password: ${4}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
-ansible-playbook /home/${1}/wordpress_playbook/playbook.yml -i /etc/ansible/hosts -u ${1}
+ansible-playbook /home/${1}/wordpress_playbook/playbook.yml --extra-vars "keydomain=${5}" -i /etc/ansible/hosts -u ${1}
 }
 
 sudo sed -i "s~#   StrictHostKeyChecking ask~   StrictHostKeyChecking no~" /etc/ssh/ssh_config  >> /home/${3}/var.txt
