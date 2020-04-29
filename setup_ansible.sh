@@ -32,7 +32,7 @@ sudo echo -e "[webservers]\n${1}" >>/etc/ansible/hosts
 
 wordpress_install() {
 cd /home/${1}
-git clone https://github.com/sayosh0512/wordpressplaybook.git
+git clone https://github.com/sayosh0512/wordpress_playbook.git
 echo "username is : ${1}" >> /home/${1}/var.txt
 echo "dbservername is : ${2}" >> /home/${1}/var.txt
 echo "dbusername is : ${3}" >> /home/${1}/var.txt
