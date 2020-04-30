@@ -37,6 +37,7 @@ echo "username is : ${1}" >> /home/${1}/var.txt
 echo "dbservername is : ${2}" >> /home/${1}/var.txt
 echo "dbusername is : ${3}" >> /home/${1}/var.txt
 echo "dbPassword is : ${4}" >> /home/${1}/var.txt
+sudo sed -i "s~domain_name: domain~domain_name: ${5}~" /home/${1}/wordpress_playbook/group_vars/all >> /home/${1}/var.txt
 sudo sed -i "s~italent~${1}~" /home/${1}/wordpress_playbook/roles/woocommerce/tasks/main.yml  >> /home/${1}/var.txt 
 sudo sed -i "s~domain~${5}~" /home/${1}/wordpress_playbook/roles/woocommerce/tasks/main.yml  >> /home/${1}/var.txt 
 sudo sed -i "s~server_hostname: wordpress~server_hostname: ${5}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
