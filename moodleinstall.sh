@@ -39,12 +39,9 @@ echo "dbusername is : ${3}" >> /home/${1}/var.txt
 echo "dbPassword is : ${4}" >> /home/${1}/var.txt
 echo "domain_name is : ${5}" >> /home/${1}/var.txt
 
-sudo sed -i "s~domain_name: domain~domain_name: ${5}~" /home/${1}/wordpress_playbook/group_vars/all >> /home/${1}/var.txt
-sudo sed -i "s~user_name: azusername~user_name: ${1}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
-#sudo sed -i "s~'localhost'~'${2}'~" /home/${1}/wordpress_playbook/roles/wordpress/templates/wp-config.php >> /home/${1}/var.txt
-#sudo sed -i "s~wp_db_user: wordpress~wp_db_user: ${3}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
-#sudo sed -i "s~wp_db_password: password~wp_db_password: ${4}~" /home/${1}/wordpress_playbook/group_vars/all  >> /home/${1}/var.txt 
-ansible-playbook /home/${1}/wordpress_playbook/playbook.yml -i /etc/ansible/hosts -u ${1}
+sudo sed -i "s~domain_name: domain~domain_name: ${5}~" /home/${1}/moodle_playbook/group_vars/all >> /home/${1}/var.txt
+sudo sed -i "s~user_name: azusername~user_name: ${1}~" /home/${1}/moodle_playbook/group_vars/all  >> /home/${1}/var.txt 
+ansible-playbook /home/${1}/moodle_playbook/playbook.yml -i /etc/ansible/hosts -u ${1}
 }
 
 sudo sed -i "s~#   StrictHostKeyChecking ask~   StrictHostKeyChecking no~" /etc/ssh/ssh_config  >> /home/${3}/var.txt
